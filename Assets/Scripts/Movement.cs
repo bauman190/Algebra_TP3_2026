@@ -1,20 +1,28 @@
+using System;
 using UnityEngine;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine.XR;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
     
     private Vector3 _movementInput;
-    
-    void Start()
+
+    [SerializeField] private List<GameObject> shapes;
+
+    private int inControl;
+
+    private void Awake()
     {
-        
+        inControl = 0;
     }
 
-    
-    void Update()
+    private void Update()
     {
         HandleInput();
+        HandleChangeControl();
         HandleMovement();
     }
     
@@ -46,7 +54,21 @@ public class Movement : MonoBehaviour
 
     private void HandleMovement()
     {
+        
         Vector3 movementVelocity = _movementInput * speed * Time.deltaTime;
-        transform.position += movementVelocity;
+        shapes[inControl].gameObject.transform.position += movementVelocity;
+    }
+
+    private void HandleChangeControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            inControl = (inControl + 1) % shapes.Count;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            inControl = (inControl - 1 + shapes.Count) % shapes.Count;
+        }
     }
 }
