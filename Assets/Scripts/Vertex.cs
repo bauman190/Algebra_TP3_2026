@@ -46,9 +46,21 @@ public class Vertex : MonoBehaviour
 
             Vector3 lado1 = mundoB - mundoA;
             Vector3 lado2 = mundoC - mundoA;
-            Vector3 normal = Vector3.Cross(lado1, lado2).normalized;
+            Vector3 normal = Normal(CrossProduct(lado1, lado2));
 
             Debug.DrawRay(centroPlano, normal * 2, Color.blue, 10f);
         }
+    }
+
+    Vector3 CrossProduct(Vector3 p1, Vector3 p2)
+    {
+        return new Vector3(p1.y * p2.z - p1.z * p2.y, p1.z * p2.x - p1.x * p2.z, p1.x * p2.y - p1.y * p2.x);
+    }
+
+    Vector3 Normal(Vector3 p)
+    {
+        float distancia = Mathf.Sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
+        
+        return new Vector3(p.x / distancia, p.y / distancia, p.z / distancia);
     }
 }
