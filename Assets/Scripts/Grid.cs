@@ -3,9 +3,9 @@ using UnityEngine;
 using System.Collections.Generic;
 public class Grid : MonoBehaviour
 {
-        [SerializeField] private Vector3Int size = new Vector3Int(10, 10, 10);
-        [SerializeField] private float spacing = 5f;
-        [SerializeField] private float pointSize = 1f;
+    [SerializeField] private Vector3Int size = new Vector3Int(10, 10, 10);
+    [SerializeField] private float spacing = 5f;
+    [SerializeField] private float pointSize = 1f;
 
     public List<Vector3> points = new List<Vector3>();
 
@@ -34,7 +34,7 @@ public class Grid : MonoBehaviour
     }
     
     private void OnDrawGizmos()
-        {
+    {
             
             if (points == null)
                 return;
@@ -45,6 +45,6 @@ public class Grid : MonoBehaviour
             {
                 Gizmos.DrawSphere(point, pointSize);
             }
-        }
+    }
 }
 

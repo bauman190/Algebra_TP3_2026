@@ -762,9 +762,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   speed: 10
   shapes:
-  - {fileID: 524741074}
   - {fileID: 1880320420}
   - {fileID: 583287584}
+  - {fileID: 236522526}
+  - {fileID: 1221751345}
+  - {fileID: 1161771952}
+  - {fileID: 524741074}
 --- !u!4 &1268766860
 Transform:
   m_ObjectHideFlags: 0
